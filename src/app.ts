@@ -1,16 +1,22 @@
 import AppServer from './lib/core'
 
-import MainRoute from './routes/index'
+import MainRoute from './routes/index.route'
 
 require('dotenv').config()
 
 console.log('Environment', process.env.NODE_ENV)
 
-const APPLICATION = new AppServer()
+const config = {
+    db_connection_uri: process.env.DEV_DB_CONNECTION,
+    environment: process.env.NODE_ENV
+} as Record<string, unknown>
+
+const APPLICATION = new AppServer(config)
 
 APPLICATION.activateMiddlewares()
 
 // DB connection
+APPLICATION.DBConnection()
 
 MainRoute(APPLICATION.getRouteInstance())
 

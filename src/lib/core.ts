@@ -1,14 +1,20 @@
 import express from 'express'
 import cors from 'cors'
+import * as  mongoose from 'mongoose'
 
+type Tconfig = Record<string, ArrayLike<Record<string, any>> | number | string | boolean | Record<string, any> | unknown>
 
 export default class AppServer {
     APP
-    constructor(){
+    DB_URI!: string  
+    // MONGOOSE!: mongoose.Mongoose
+    constructor(config: Tconfig){
         this.APP = express()
+        this.DB_URI = config.db_connection_uri as string
+        // this.MONGOOSE = mongoose
     }
 
-    async activateMiddlewares(){
+    public async activateMiddlewares(){
 
         this.APP.use(cors())
         this.APP.use(express.json())
@@ -16,16 +22,28 @@ export default class AppServer {
         this.APP.use(express.static('public'))
     }
 
-    async loggerInitiate() {
+    public async loggerInitiate() {
         // 
     }
 
-    async initiateDBConnection(){
-        // 
-        return 
+    public async DBConnection(){
+        try{
+
+           await mongoose.connect(this.DB_URI)
+           console.log('DB connected successfully')
+          
+
+        }catch(e){
+
+            console.log('DB connection error')
+        } 
     }
 
-    getRouteInstance(){
+    // public getMongoose(){
+    //     return this.MONGOOSE
+    // }
+
+    public getRouteInstance(){
         return this.APP
     }
 
