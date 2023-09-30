@@ -2,9 +2,11 @@
   "name": "expo-api",
   "version": "1.0.0",
   "description": "Explore",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "set NODE_ENV=dev && nodemon ./src/app.ts",
+    "build:dev": "tsc -p . && node ./dist/app.js"
   },
   "keywords": [],
   "author": "",

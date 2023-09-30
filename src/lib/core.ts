@@ -8,18 +8,28 @@ export default class AppServer {
         this.APP = express()
     }
 
-    activateMiddlewares(){
+    async activateMiddlewares(){
 
         this.APP.use(cors())
         this.APP.use(express.json())
         this.APP.use(express.urlencoded({ extended: true}))
+        this.APP.use(express.static('public'))
     }
 
-    initiateDBConnection(){
+    async loggerInitiate() {
         // 
     }
 
-    listen(port: number){
+    async initiateDBConnection(){
+        // 
+        return 
+    }
+
+    getRouteInstance(){
+        return this.APP
+    }
+
+    async listen(port: number){
         this.APP.listen(port, () => {
             console.log(`APP listening on http://localhost:${port}`)
         })
