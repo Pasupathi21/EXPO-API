@@ -2,6 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import * as  mongoose from 'mongoose'
 
+import { GlobalErrorHandler } from '../../middleware/global-error-handler'
+
 type Tconfig = Record<string, ArrayLike<Record<string, any>> | number | string | boolean | Record<string, any> | unknown>
 
 export default class AppServer {
@@ -45,6 +47,13 @@ export default class AppServer {
 
     public getRouteInstance(){
         return this.APP
+    }
+
+    /**
+     * @Note : use this error middleware to finally in middleware pipeline
+     */
+    public globalErrorHandler() {
+        this.APP.use(GlobalErrorHandler)
     }
 
     async listen(port: number){

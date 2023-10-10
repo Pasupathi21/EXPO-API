@@ -1,4 +1,4 @@
-import AppServer from './lib/core'
+import AppServer from './lib/server/core'
 
 import MainRoute from './routes/index.route'
 
@@ -16,9 +16,12 @@ const APPLICATION = new AppServer(config)
 APPLICATION.activateMiddlewares()
 
 // DB connection
-APPLICATION.DBConnection()
+// APPLICATION.DBConnection()
 
 MainRoute(APPLICATION.getRouteInstance())
+
+// Global error middlewares
+APPLICATION.globalErrorHandler()
 
 let PORT: number | any = process.env.PORT || 5151
 
