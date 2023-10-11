@@ -1,0 +1,1 @@
+export const Jsonparse = (json: Record<string, any>) => JSON.parse(JSON.stringify(json))

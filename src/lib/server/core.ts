@@ -31,7 +31,10 @@ export default class AppServer {
     public async DBConnection(){
         try{
 
-           await mongoose.connect(this.DB_URI)
+           await mongoose.connect(this.DB_URI,{   
+            // useNewUrlParser: true,
+            // useUnifiedTopology: true
+           })
            console.log('DB connected successfully')
           
 
