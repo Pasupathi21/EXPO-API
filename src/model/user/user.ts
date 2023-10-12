@@ -15,10 +15,11 @@ const userSchema = new mongoose.Schema<IUser>({
         required: true,
         validate: {
             validator: function (val: string){
-                return val && val?.length > 3
+                return val && val?.length > 5
             },
-            message: (props) => `username should be atlease 6 letters` 
-        }
+            message: (props) => `username should be atlease 5 letters` 
+        },
+        unique: true
     },
     email: {
         type: String,

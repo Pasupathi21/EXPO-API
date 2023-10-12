@@ -16,7 +16,7 @@ const APPLICATION = new AppServer(config)
 APPLICATION.activateMiddlewares()
 
 // DB connection
-// APPLICATION.DBConnection()
+APPLICATION.DBConnection()
 
 MainRoute(APPLICATION.getRouteInstance())
 

@@ -4,4 +4,5 @@ import UserAndAuth from '../../controller/Authentication/user-and-auth.controlle
 
 export default function AuthenticationRoutes(route: Express | unknown | any){
     route.post('/user/create', UserAndAuth.createUser)
+    route.post('/user/signin', UserAndAuth.signUp)
 }

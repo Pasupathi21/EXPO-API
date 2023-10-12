@@ -7,7 +7,7 @@ export const STATUC_CODE_WITH_MESSAGE = Object.freeze({
 
 })
 
-export const STATUS_CODE = Object.freeze([200, 201, 400, 403, 404, 500])
+export const STATUS_CODE = Object.freeze([200, 201, 400, 401, 403, 404, 500])
 
 export const MESSAGES = Object.freeze({
     GET: 'data retrived successfully',
