@@ -17,7 +17,7 @@ export default class RequestResponseModule{
         this.response.status(code || 200).send({
             status: true,
             statusMessage: MESSAGES?.SUCCESS,
-            data: data,
+            response: data,
             statusCode: code,
             message
         })
@@ -29,7 +29,7 @@ export default class RequestResponseModule{
             status: false,
             statusMessage: MESSAGES?.FAILED,
             statusCode: code,
-            data,
+            response: data,
             message
         })
     }
