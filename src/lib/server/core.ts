@@ -64,7 +64,7 @@ export default class AppServer {
 
     async listen(port: number){
         this.APP.listen(port, () => {
-            console.log(`APP listening on http://localhost:${port}`)
+            console.log(`APP listening on port: ${port}`)
         })
     }
 }
