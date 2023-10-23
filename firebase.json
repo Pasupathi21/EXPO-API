@@ -1,7 +1,7 @@
 {
   "functions": [
     {
-      "source": "dist",
+      "source": "dist/app.js",
       "codebase": "default",
       "ignore": [
         "node_modules",
