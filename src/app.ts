@@ -4,7 +4,7 @@ import MainRoute from './routes/index.route'
 
 require('dotenv').config()
 
-import functions from 'firebase-functions'
+import * as functions from 'firebase-functions'
 
 console.log('Environment', process?.env?.NODE_ENV)
 
@@ -32,4 +32,4 @@ APPLICATION.listen(PORT)
 
 export default APPLICATION
 
-export const app = functions.https.onRequest(APPLICATION)
+// export const app = functions.https.onRequest(APPLICATION)

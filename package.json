@@ -8,7 +8,10 @@
     "dev": "set NODE_ENV=dev && nodemon ./src/app.ts",
     "build:dev": "tsc -p . && node ./dist/app.js",
     "local": "set NODE_ENV=local && nodemon ./src/app.ts",
-    "build:fb": "tsc -p . && echo \" Firbebase build completed, Ready to deploy 🚀🚀🚀\""
+    "start:prod": "set NODE_ENV=prod && tsc -p . && node ./dist/app.js",
+    "build:fb": "tsc -p . && echo \" Firbebase build completed, Ready to deploy 🚀🚀🚀\"",
+    "deploy": "firebase deploy",
+    "deploy:fn": "firebase deploy --only function"
   },
   "keywords": [],
   "author": "",
