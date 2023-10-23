@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import * as  mongoose from 'mongoose'
+import helmet from 'helmet'
 
 import { GlobalErrorHandler } from '../../middleware/global-error-handler'
 
@@ -19,6 +20,8 @@ export default class AppServer {
     public async activateMiddlewares(){
 
         this.APP.use(cors())
+        // Protect http header attack
+        this.APP.use(helmet())
         this.APP.use(express.json())
         this.APP.use(express.urlencoded({ extended: true}))
         this.APP.use(express.static('public'))
