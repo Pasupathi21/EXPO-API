@@ -1,0 +1,73 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\PASUPATHI\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add moment
+
+PATH: 
+  C:\Users\PASUPATHI\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\PASUPATHI\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Users\PASUPATHI\AppData\Local\Programs\Python\Python311;C:\Users\PASUPATHI\AppData\Local\Programs\Python\Python311\Scripts;D:\Mongo-Tools\mongodb-database-tools-windows-x86_64-100.7.0\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Users\PASUPATHI\AppData\Local\Microsoft\WindowsApps;C:\Users\PASUPATHI\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\PASUPATHI\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'D:\my_workspace\EXPO-API\node_modules\bcrypt\lib\binding\napi-v3\bcrypt_lib.node'
+
+npm manifest: 
+  {
+    "name": "expo-api",
+    "version": "1.0.0",
+    "description": "Explore",
+    "main": "src/app.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "dev": "set NODE_ENV=dev && nodemon ./src/app.ts",
+      "build:dev": "tsc -p . && node ./dist/app.js",
+      "local": "set NODE_ENV=local && nodemon ./src/app.ts",
+      "start:prod": "set NODE_ENV=prod && tsc -p . && node ./dist/app.js",
+      "build:fb": "tsc -p . && echo \" Firbebase build completed, Ready to deploy 🚀🚀🚀\"",
+      "deploy": "firebase deploy",
+      "deploy:fn": "firebase deploy --only function"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "bcrypt": "^5.1.1",
+      "cors": "^2.8.5",
+      "dotenv": "^16.3.1",
+      "express": "^4.18.2",
+      "express-fileupload": "^1.4.0",
+      "firebase": "^10.5.0",
+      "firebase-admin": "^11.11.0",
+      "firebase-functions": "^4.4.1",
+      "helmet": "^7.0.0",
+      "jsonwebtoken": "^9.0.2",
+      "mongoose": "^7.5.2",
+      "pug": "^3.0.2",
+      "socket.io": "^4.7.2"
+    },
+    "devDependencies": {
+      "@types/bcrypt": "^5.0.0",
+      "@types/express": "^4.17.18",
+      "@types/express-fileupload": "^1.4.2",
+      "@types/jsonwebtoken": "^9.0.3",
+      "@types/node": "^20.6.4",
+      "firebase-functions-test": "^3.1.0",
+      "nodemon": "^3.0.1",
+      "ts-node": "^10.9.1",
+      "typescript": "^5.2.2"
+    },
+    "engines": {
+      "node": "18"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

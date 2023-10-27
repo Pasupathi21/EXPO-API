@@ -4,13 +4,13 @@ import MainRoute from './routes/index.route'
 
 require('dotenv').config()
 
-import * as functions from 'firebase-functions'
+// import * as functions from 'firebase-functions'
 
 console.log('Environment', process?.env?.NODE_ENV)
 
 const config = {
-    // db_connection_uri: process?.env?.DEV_DB_CONNECTION,
-    db_connection_uri: "mongodb+srv://filessend109:mongodb@cluster0.bf4zl3m.mongodb.net/expo",
+    db_connection_uri: process?.env?.DEV_DB_CONNECTION,
+    // db_connection_uri: "mongodb+srv://filessend109:mongodb@cluster0.bf4zl3m.mongodb.net/expo",
     environment: process?.env?.NODE_ENV
 } as Record<string, unknown>
 
