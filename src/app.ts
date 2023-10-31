@@ -2,6 +2,10 @@ import AppServer from './lib/server/core'
 
 import MainRoute from './routes/index.route'
 
+import FireBaseApp from './lib/firebase/firebase'
+
+import { APP_ENV }from './app.environment'
+
 require('dotenv').config()
 
 // import * as functions from 'firebase-functions'
@@ -26,10 +30,18 @@ MainRoute(APPLICATION.getRouteInstance())
 // Global error middlewares
 APPLICATION.globalErrorHandler()
 
+
+// export const app = functions.https.onRequest(APPLICATION)
+
+// Firebase storage service
+const fbApp = new FireBaseApp(APP_ENV?.FIREBASE_CONFIG)
+export const fbStorageService = fbApp.getStorageInstance()
+
+
 let PORT: number | any = process?.env?.PORT || 5151
 
 APPLICATION.listen(PORT)
 
 export default APPLICATION
 
-// export const app = functions.https.onRequest(APPLICATION)
+
