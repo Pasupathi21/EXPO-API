@@ -3,6 +3,8 @@ import cors from 'cors'
 import * as  mongoose from 'mongoose'
 import helmet from 'helmet'
 
+import fileUpload from 'express-fileupload'
+
 import { GlobalErrorHandler } from '../../middleware/global-error-handler'
 
 type Tconfig = Record<string, ArrayLike<Record<string, any>> | number | string | boolean | Record<string, any> | unknown>
@@ -18,13 +20,23 @@ export default class AppServer {
     }
 
     public async activateMiddlewares(){
-
+        let byte = 1024;
+        let kb = 1024;
+        let mb = 40
         this.APP.use(cors())
         // Protect http header attack
         this.APP.use(helmet())
         this.APP.use(express.json())
         this.APP.use(express.urlencoded({ extended: true}))
         this.APP.use(express.static('public'))
+        // For multipart file handling
+        this.APP.use(fileUpload({
+            useTempFiles: true,
+            tempFileDir: '/temp/',
+            limits: {
+                fileSize: mb * kb * byte
+            }
+        }))
     }
 
     public async loggerInitiate() {

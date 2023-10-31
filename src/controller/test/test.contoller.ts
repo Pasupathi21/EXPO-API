@@ -1,6 +1,8 @@
 import express, { Request,Response } from 'express'
 import DB from '../../model/index.model'
 
+import { firebaseAppService } from '../../app'
+
 class Test {
     test(req: Request, res: Response){
         res.json({
@@ -17,6 +19,17 @@ class Test {
             message: 'Test tow working fine 👍👍👍',
             data: createData
         })
+    }
+
+
+    async testFileUpload (request: Request, response:Response){
+        try{
+            console.log('Request', request.files)
+            request.files
+            response.send(request.files)
+        }catch(e){
+            response.send(e)
+        }
     }
 }
 
