@@ -26,7 +26,11 @@ class Test {
         try{
             console.log('Request', request.files)
             request.files
-            response.send(request.files)
+            const uploadRes = await firebaseAppService.uploadFile(request?.files?.files as any, 'VIDEO')
+            response.send({
+                message: 'File upload success',
+                uploadRes
+            })
         }catch(e){
             response.send(e)
         }
