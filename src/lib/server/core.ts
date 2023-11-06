@@ -2,10 +2,15 @@ import express from 'express'
 import cors from 'cors'
 import * as  mongoose from 'mongoose'
 import helmet from 'helmet'
+import fs from 'fs'
 
-import fileUpload from 'express-fileupload'
+
 
 import { GlobalErrorHandler } from '../../middleware/global-error-handler'
+import { multerFileUpload } from '../../middleware/multer'
+import { MULTER_FOLDER } from '../../data/constant'
+
+import { createDirectory } from '../../utils/handleFiles'
 
 type Tconfig = Record<string, ArrayLike<Record<string, any>> | number | string | boolean | Record<string, any> | unknown>
 
@@ -29,14 +34,25 @@ export default class AppServer {
         this.APP.use(express.json())
         this.APP.use(express.urlencoded({ extended: true}))
         this.APP.use(express.static('public'))
+
         // For multipart file handling
-        this.APP.use(fileUpload({
-            useTempFiles: true,
-            tempFileDir: '/temp/',
-            limits: {
-                fileSize: mb * kb * byte
-            }
-        }))
+        console.log('DIR', __dirname)
+        // this.APP.use(fileUpload({
+        //     uploadTimeout: 0,
+        //     useTempFiles: true,
+        //     tempFileDir: `${__dirname}/../../../temp`,
+        //     limits: {
+        //         fileSize: mb * kb * byte
+        //     }
+        // }))
+
+        // make folder for multer
+        const MULTER_FOLDER_PATH = `${__dirname}\\..\\..\\..\\${MULTER_FOLDER}`
+        if(!fs.existsSync(MULTER_FOLDER_PATH)){
+            console.log('MULTER_FOLDER created successfully')
+            await createDirectory(MULTER_FOLDER_PATH)
+          }
+        this.APP.use(multerFileUpload.array('file'))
     }
 
     public async loggerInitiate() {

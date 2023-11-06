@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response} from 'express'
 import RequestResponseModule from '../../lib/server/requestresponse'
 import DB from '../../model/index.model'
-import  { Jsonparse } from '../../util/json'
+import  { Jsonparse } from '../../utils/json'
 import { MESSAGES, STATUS_CODE } from '../../data/statuscode'
 import * as bcrypt from 'bcrypt'
 import { APP_NAME } from '../../data/constant'
